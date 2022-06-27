@@ -7,7 +7,7 @@ export const site = {
 };
 
 export const app = {
-    title: 'Notes App'
+    title: 'Notes'
 };
 
 export const  links = [
