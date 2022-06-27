@@ -14,14 +14,49 @@ export default {
 
     data(){
         return{
-             notes:["task1", "task1", "task2"],
+             notes:[
+                {
+                    title:'Lorem Vue 3',
+                    tags: ['work']
+                },
+
+                {
+                    title:'Finish course',
+                    tags: ['work','home']
+                },
+             ],
         }
     },
 
+     watch:{
+        notes:{
+            handler: function (updateList){
+               localStorage.setItem('notes',JSON.stringify(updateList));
+            },
+            deep:true,
+        }
+    },
+
+    mounted(){
+        this.getNotes();
+    },
+
     methods:{
-        handLeSubmit(note){
-            this.notes.push(note)
+        
+        getNotes(){
+            const localNotes = localStorage.getItem('notes');
+            if(localNotes){
+                this.notes= JSON.parse(localNotes);
+            }
         },
+
+        handLeSubmit(title){
+            const note = {
+                title:title,
+                tags:[]
+            }
+            this.notes.push(note);
+         },
 
         handLeRemove(index){
             this.notes.splice(index,1);
