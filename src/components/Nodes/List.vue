@@ -15,6 +15,8 @@
 <style lang="scss">
 .notes-list {
   padding: 40px 0;
+  max-width:600px;
+  margin:0 auto;
 }
 .note-item {
   width: 100%;
